@@ -16,12 +16,57 @@
     <b-container>
       <b-row>
         <b-col>
-          <h2 class="text-primary">Settings</h2>
+          <h2 class="text-primary">Packs</h2>
         </b-col>
       </b-row>
       <b-row>
-        <b-col>
-          Settings go here
+        <b-col class="mb-4">
+          <b-card no-body>
+            <b-tabs card>
+              <b-tab title="Character" active>
+                <b-form-group>
+                  <b-form-checkbox
+                    v-for="character in characters"
+                    :key="character"
+                    :id="character"
+                    :value="character"
+                    name="character_box"
+                    class="my-1"
+                    v-model="selectedCharacters">
+                    {{ character }}
+                  </b-form-checkbox>
+                </b-form-group>
+              </b-tab>
+              <b-tab title="Linage">
+                <b-form-group>
+                  <b-form-checkbox
+                    v-for="linage in linages"
+                    :key="linage"
+                    :id="linage"
+                    :value="linage"
+                    name="linage_box"
+                    class="my-1"
+                    v-model="selectedLinages">
+                    {{ linage }}
+                  </b-form-checkbox>
+                </b-form-group>
+              </b-tab>
+              <b-tab title="Domain">
+                <b-form-group>
+                  <b-form-checkbox
+                    v-for="domain in domains"
+                    :key="domain"
+                    :id="domain"
+                    :value="domain"
+                    name="domain_box"
+                    class="my-1"
+                    v-model="selectedDomains">
+                    {{ domain }}
+                  </b-form-checkbox>
+                </b-form-group>
+              </b-tab>
+            </b-tabs>
+          </b-card>
         </b-col>
       </b-row>
     </b-container>
@@ -32,14 +77,21 @@
 
 import appDeck from './components/Deck.vue';
 
+const characterList = ['Ariaspes', 'Tegu', 'Miselda', 'Zevrane', 'Jaleesa', 'Raganhar', 'Thenoch', 'Virgiliu', 'Wachiwi'];
+const linageList = ['The Animist', 'The Demonologist', 'The Bloodlord', 'The Necromancer', 'The Shapeshifter', 'The Druid'];
+const domainList = ['Of the Forgotton Temple', 'Of the Outcast Sanctuary', 'Of the Haunted Forest', 'Of the Screaming Coast', 'Of the Bloodsoaked Fjord', 'Of the Lunatic Asylum', 'Of the Royal Palace', 'Of the Witch Mountain'];
+
 export default {
   name: 'app',
   data() {
     return {
-      character: ['Ariaspes', 'Tegu', 'Miselda', 'Zevrane', 'Jaleesa', 'Raganhar', 'Thenoch', 'Virgiliu', 'Wachiwi'],
-      linage: ['The Animist', 'The Demonologist', 'The Bloodlord', 'The Necromancer', 'The Shapeshifter', 'The Druid'],
-      domain: ['Of the Forgotton Temple', 'Of the Outcast Sanctuary', 'Of the Haunted Forest', 'Of the Screaming Coast', 'Of the Bloodsoaked Fjord', 'Of the Lunatic Asylum', 'Of the Royal Palace', 'Of the Witch Mountain'],
+      characters: characterList.slice(),
+      linages: linageList.slice(),
+      domains: domainList.slice(),
       decks: [],
+      selectedCharacters: characterList.slice(),
+      selectedLinages: linageList.slice(),
+      selectedDomains: domainList.slice(),
     };
   },
   methods: {
@@ -47,9 +99,9 @@ export default {
       this.decks = [];
 
       // copy avaiable deck options
-      const remainingCharacter = this.character.slice();
-      const remainingLinage = this.linage.slice();
-      const remainingDomain = this.domain.slice();
+      const remainingCharacter = this.selectedCharacters.slice();
+      const remainingLinage = this.selectedLinages.slice();
+      const remainingDomain = this.selectedDomains.slice();
 
       while (
         remainingCharacter.length > 0
