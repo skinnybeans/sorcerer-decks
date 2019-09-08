@@ -1,29 +1,9 @@
 # sorcerer-generator
 
-## Project setup
-```
-npm install
-```
+## Overview
+A simple site to generate random decks for the game Sorcerer by White Wizard Games.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Written using Vue and BootstrapVue.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Running
+To run a local development server: `npm run serve`
