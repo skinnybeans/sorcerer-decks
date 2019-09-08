@@ -1,13 +1,14 @@
 <template>
   <div id="app">
+    <app-header></app-header>
     <b-container>
       <b-row class="mt-3">
         <b-col>
-          <b-button variant="outline-primary" @click="generate_deck">Generate Decks</b-button>
+          <b-button variant="outline-dark" @click="generate_deck">Generate Decks</b-button>
         </b-col>
       </b-row>
       <b-row>
-        <b-col class="col-md-6 col-12" v-for="(deck, index) in decks" :key="deck.character">
+        <b-col class="col-lg-4 col-md-6 col-12" v-for="(deck, index) in decks" :key="deck.character">
           <app-deck :deck=deck :deck_number="index + 1"></app-deck>
         </b-col>
       </b-row>
@@ -16,14 +17,20 @@
     <b-container>
       <b-row>
         <b-col>
-          <h2 class="text-primary">Packs</h2>
+          <h2 class="text-dark">Packs</h2>
         </b-col>
       </b-row>
       <b-row>
         <b-col class="mb-4">
           <b-card no-body>
-            <b-tabs card>
-              <b-tab title="Character" active>
+            <b-tabs
+              pills
+              card
+              active-nav-item-class="font-weight-bold bg-light"
+              nav-item-class="text-danger"
+              active-tab-class=""
+              class="dark">
+              <b-tab title="Character" active title-link-class="text-dark">
                 <b-form-group>
                   <b-form-checkbox
                     v-for="character in characters"
@@ -31,13 +38,13 @@
                     :id="character"
                     :value="character"
                     name="character_box"
-                    class="my-1"
+                    class="my-1 dark"
                     v-model="selectedCharacters">
                     {{ character }}
                   </b-form-checkbox>
                 </b-form-group>
               </b-tab>
-              <b-tab title="Linage">
+              <b-tab title="Linage" title-link-class="text-dark">
                 <b-form-group>
                   <b-form-checkbox
                     v-for="linage in linages"
@@ -51,7 +58,7 @@
                   </b-form-checkbox>
                 </b-form-group>
               </b-tab>
-              <b-tab title="Domain">
+              <b-tab title="Domain" title-link-class="text-dark">
                 <b-form-group>
                   <b-form-checkbox
                     v-for="domain in domains"
@@ -76,6 +83,7 @@
 <script>
 
 import appDeck from './components/Deck.vue';
+import appHeader from './components/Header.vue';
 
 const characterList = ['Ariaspes', 'Tegu', 'Miselda', 'Zevrane', 'Jaleesa', 'Raganhar', 'Thenoch', 'Virgiliu', 'Wachiwi'];
 const linageList = ['The Animist', 'The Demonologist', 'The Bloodlord', 'The Necromancer', 'The Shapeshifter', 'The Druid'];
@@ -124,9 +132,15 @@ export default {
   },
   components: {
     appDeck,
+    appHeader,
   },
 };
 </script>
 
 <style>
+  .my-buttons .active {
+    color: #fff !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+  }
 </style>

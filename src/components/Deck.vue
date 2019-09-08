@@ -1,8 +1,8 @@
 <template>
   <b-card
-    header-bg-variant="primary"
+    header-bg-variant="dark"
     header-text-variant="white"
-    border-variant="primary"
+    border-variant="dark"
     header-tag="header"
     class="my-3"
     >
