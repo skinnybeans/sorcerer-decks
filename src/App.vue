@@ -23,6 +23,7 @@
       <b-row>
         <b-col>
           <app-pack-selection></app-pack-selection>
+          {{ testPacks }}
         </b-col>
         <b-col class="mb-4">
           <b-card no-body>
@@ -85,14 +86,19 @@
 
 <script>
 
-import appDeck from './components/decks/Deck.vue';
 import appHeader from './components/Header.vue';
-import appPackSelection from './components/packSelection/PackSelection.vue';
+import appDeck from './components/decks/Deck.vue';
+import appPackSelection from './components/packs/PackSelection.vue';
 
 import { characterList, linageList, domainList } from './data/decks';
 
 export default {
   name: 'app',
+  computed: {
+    testPacks() {
+      return this.$store.state.packs.characterPacks;
+    },
+  },
   data() {
     return {
       characters: characterList.slice(),
