@@ -23,7 +23,6 @@
       <b-row>
         <b-col>
           <app-pack-selection></app-pack-selection>
-          {{ testPacks }}
         </b-col>
         <b-col class="mb-4">
           <b-card no-body>
@@ -95,9 +94,31 @@ import { characterList, linageList, domainList } from './data/decks';
 export default {
   name: 'app',
   computed: {
-    testPacks() {
-      return this.$store.state.packs.characterPacks;
+    selectedCharacters: {
+      get() {
+        return this.$store.state.packs.selectedCharacters;
+      },
+      set(value) {
+        this.$store.commit('packs/setSelectedCharacters', value);
+      },
     },
+    selectedLinages: {
+      get() {
+        return this.$store.state.packs.selectedLinages;
+      },
+      set(value) {
+        this.$store.commit('packs/setSelectedLinages', value);
+      },
+    },
+    selectedDomains: {
+      get() {
+        return this.$store.state.packs.selectedDomains;
+      },
+      set(value) {
+        this.$store.commit('packs/setSelectedDomains', value);
+      },
+    },
+    selectedPacks() { return this.$store.getters['packs/selectedPacks']; },
   },
   data() {
     return {
@@ -105,9 +126,6 @@ export default {
       linages: linageList.slice(),
       domains: domainList.slice(),
       decks: [],
-      selectedCharacters: characterList.slice(),
-      selectedLinages: linageList.slice(),
-      selectedDomains: domainList.slice(),
     };
   },
   methods: {
@@ -115,9 +133,9 @@ export default {
       this.decks = [];
 
       // copy avaiable deck options
-      const remainingCharacter = this.selectedCharacters.slice();
-      const remainingLinage = this.selectedLinages.slice();
-      const remainingDomain = this.selectedDomains.slice();
+      const remainingCharacter = this.selectedPacks.characters.slice();
+      const remainingLinage = this.selectedPacks.linages.slice();
+      const remainingDomain = this.selectedPacks.domains.slice();
 
       while (
         remainingCharacter.length > 0

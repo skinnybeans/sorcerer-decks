@@ -1,25 +1,35 @@
 const packs = {
+  namespaced: true,
   state: {
-    characterPacks: ['Ariaspes', 'Tegu', 'Miselda'],
-    domainPacks: ['The Animist', 'The Demonologist', 'The Bloodlord'],
-    linagePacks: ['Of the Forgotten Temple', 'Of the Outcast Sanctuary'],
-    selectedCharacterPacks: ['Ariaspes', 'Tegu', 'Miselda'],
-    selectedDomainPacks: ['The Animist', 'The Demonologist', 'The Bloodlord'],
-    selectedLinagePacks: ['Of the Forgotten Temple', 'Of the Outcast Sanctuary'],
+    characters: ['Ariaspes', 'Tegu', 'Miselda'],
+    domains: ['The Animist', 'The Demonologist', 'The Bloodlord'],
+    linages: ['Of the Forgotten Temple', 'Of the Outcast Sanctuary'],
+    selectedCharacters: ['Ariaspes', 'Tegu', 'Miselda'],
+    selectedLinages: ['The Animist', 'The Demonologist', 'The Bloodlord'],
+    selectedDomains: ['Of the Forgotten Temple', 'Of the Outcast Sanctuary'],
   },
   mutations: {
     setSelectedCharacters(state, data) {
-      state.characterPacks = data;
-    },
-    setSelectedDomains(state, data) {
-      state.domainPacks = data;
+      state.selectedCharacters = data;
     },
     setSelectedLinages(state, data) {
-      state.linagePacks = data;
+      state.selectedLinages = data;
+    },
+    setSelectedDomains(state, data) {
+      state.selectedDomains = data;
     },
   },
   actions: { },
-  getters: { },
+  getters: {
+    selectedPacks: (state) => {
+      const selectedPacks = {
+        characters: state.selectedCharacters.slice(),
+        linages: state.selectedLinages.slice(),
+        domains: state.selectedDomains.slice(),
+      };
+      return selectedPacks;
+    },
+  },
 };
 
 export { packs };
