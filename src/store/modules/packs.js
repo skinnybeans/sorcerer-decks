@@ -1,9 +1,11 @@
+import * as deckData from '../../data/decks';
+
 const packs = {
   namespaced: true,
   state: {
-    characters: ['Ariaspes', 'Tegu', 'Miselda'],
-    domains: ['The Animist', 'The Demonologist', 'The Bloodlord'],
-    linages: ['Of the Forgotten Temple', 'Of the Outcast Sanctuary'],
+    characters: deckData.characterList,
+    linages: deckData.linageList,
+    domains: deckData.domainList,
     selectedCharacters: ['Ariaspes', 'Tegu', 'Miselda'],
     selectedLinages: ['The Animist', 'The Demonologist', 'The Bloodlord'],
     selectedDomains: ['Of the Forgotten Temple', 'Of the Outcast Sanctuary'],
