@@ -21,6 +21,9 @@
         </b-col>
       </b-row>
       <b-row>
+        <b-col>
+          <app-pack-selection></app-pack-selection>
+        </b-col>
         <b-col class="mb-4">
           <b-card no-body>
             <b-tabs
@@ -82,12 +85,11 @@
 
 <script>
 
-import appDeck from './components/Deck.vue';
+import appDeck from './components/decks/Deck.vue';
 import appHeader from './components/Header.vue';
+import appPackSelection from './components/packSelection/PackSelection.vue';
 
-const characterList = ['Ariaspes', 'Tegu', 'Miselda', 'Zevrane', 'Jaleesa', 'Raganhar', 'Thenoch', 'Virgiliu', 'Wachiwi'];
-const linageList = ['The Animist', 'The Demonologist', 'The Bloodlord', 'The Necromancer', 'The Shapeshifter', 'The Druid'];
-const domainList = ['Of the Forgotton Temple', 'Of the Outcast Sanctuary', 'Of the Haunted Forest', 'Of the Screaming Coast', 'Of the Bloodsoaked Fjord', 'Of the Lunatic Asylum', 'Of the Royal Palace', 'Of the Witch Mountain'];
+import { characterList, linageList, domainList } from './data/decks';
 
 export default {
   name: 'app',
@@ -133,14 +135,7 @@ export default {
   components: {
     appDeck,
     appHeader,
+    appPackSelection,
   },
 };
 </script>
-
-<style>
-  .my-buttons .active {
-    color: #fff !important;
-    background-color: #28a745 !important;
-    border-color: #28a745 !important;
-  }
-</style>
