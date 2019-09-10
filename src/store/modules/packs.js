@@ -23,7 +23,6 @@ const packs = {
   },
   actions: {
     setSelectedByType({ commit }, data) {
-      console.log(data);
       switch (data.type) {
         case 'character':
           commit('setSelectedCharacters', (data.packs));
