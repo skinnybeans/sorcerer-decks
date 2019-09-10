@@ -22,58 +22,7 @@
       </b-row>
       <b-row>
         <b-col class="mb-4">
-          <b-card no-body>
-            <b-tabs
-              pills
-              card
-              active-nav-item-class="font-weight-bold bg-light"
-              nav-item-class="text-danger"
-              active-tab-class=""
-              class="dark">
-              <b-tab title="Character" active title-link-class="text-dark">
-                <b-form-group>
-                  <b-form-checkbox
-                    v-for="character in characters"
-                    :key="character"
-                    :id="character"
-                    :value="character"
-                    name="character_box"
-                    class="my-1 dark"
-                    v-model="selectedCharacters">
-                    {{ character }}
-                  </b-form-checkbox>
-                </b-form-group>
-              </b-tab>
-              <b-tab title="Linage" title-link-class="text-dark">
-                <b-form-group>
-                  <b-form-checkbox
-                    v-for="linage in linages"
-                    :key="linage"
-                    :id="linage"
-                    :value="linage"
-                    name="linage_box"
-                    class="my-1"
-                    v-model="selectedLinages">
-                    {{ linage }}
-                  </b-form-checkbox>
-                </b-form-group>
-              </b-tab>
-              <b-tab title="Domain" title-link-class="text-dark">
-                <b-form-group>
-                  <b-form-checkbox
-                    v-for="domain in domains"
-                    :key="domain"
-                    :id="domain"
-                    :value="domain"
-                    name="domain_box"
-                    class="my-1"
-                    v-model="selectedDomains">
-                    {{ domain }}
-                  </b-form-checkbox>
-                </b-form-group>
-              </b-tab>
-            </b-tabs>
-          </b-card>
+          <app-pack-selection></app-pack-selection>
         </b-col>
       </b-row>
     </b-container>
@@ -82,24 +31,18 @@
 
 <script>
 
-import appDeck from './components/Deck.vue';
 import appHeader from './components/Header.vue';
-
-const characterList = ['Ariaspes', 'Tegu', 'Miselda', 'Zevrane', 'Jaleesa', 'Raganhar', 'Thenoch', 'Virgiliu', 'Wachiwi'];
-const linageList = ['The Animist', 'The Demonologist', 'The Bloodlord', 'The Necromancer', 'The Shapeshifter', 'The Druid'];
-const domainList = ['Of the Forgotton Temple', 'Of the Outcast Sanctuary', 'Of the Haunted Forest', 'Of the Screaming Coast', 'Of the Bloodsoaked Fjord', 'Of the Lunatic Asylum', 'Of the Royal Palace', 'Of the Witch Mountain'];
+import appDeck from './components/decks/Deck.vue';
+import appPackSelection from './components/packs/PackSelection.vue';
 
 export default {
   name: 'app',
+  computed: {
+    selectedPacks() { return this.$store.getters['packs/selectedPacks']; },
+  },
   data() {
     return {
-      characters: characterList.slice(),
-      linages: linageList.slice(),
-      domains: domainList.slice(),
       decks: [],
-      selectedCharacters: characterList.slice(),
-      selectedLinages: linageList.slice(),
-      selectedDomains: domainList.slice(),
     };
   },
   methods: {
@@ -107,9 +50,9 @@ export default {
       this.decks = [];
 
       // copy avaiable deck options
-      const remainingCharacter = this.selectedCharacters.slice();
-      const remainingLinage = this.selectedLinages.slice();
-      const remainingDomain = this.selectedDomains.slice();
+      const remainingCharacter = this.selectedPacks.characters.slice();
+      const remainingLinage = this.selectedPacks.linages.slice();
+      const remainingDomain = this.selectedPacks.domains.slice();
 
       while (
         remainingCharacter.length > 0
@@ -133,14 +76,7 @@ export default {
   components: {
     appDeck,
     appHeader,
+    appPackSelection,
   },
 };
 </script>
-
-<style>
-  .my-buttons .active {
-    color: #fff !important;
-    background-color: #28a745 !important;
-    border-color: #28a745 !important;
-  }
-</style>
