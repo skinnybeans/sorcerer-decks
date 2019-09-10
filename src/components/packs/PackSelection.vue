@@ -8,46 +8,13 @@
       active-tab-class=""
       class="dark">
       <b-tab title="Character" active title-link-class="text-dark">
-        <b-form-group>
-          <b-form-checkbox
-            v-for="character in characters"
-            :key="character"
-            :id="character"
-            :value="character"
-            name="character_box"
-            class="my-1 dark"
-            v-model="selectedCharacters">
-            {{ character }}
-          </b-form-checkbox>
-        </b-form-group>
+        <app-pack-list :type="'character'"></app-pack-list>
       </b-tab>
       <b-tab title="Linage" title-link-class="text-dark">
-        <b-form-group>
-          <b-form-checkbox
-            v-for="linage in linages"
-            :key="linage"
-            :id="linage"
-            :value="linage"
-            name="linage_box"
-            class="my-1"
-            v-model="selectedLinages">
-            {{ linage }}
-          </b-form-checkbox>
-        </b-form-group>
+        <app-pack-list :type="'linage'"></app-pack-list>
       </b-tab>
       <b-tab title="Domain" title-link-class="text-dark">
-        <b-form-group>
-          <b-form-checkbox
-            v-for="domain in domains"
-            :key="domain"
-            :id="domain"
-            :value="domain"
-            name="domain_box"
-            class="my-1"
-            v-model="selectedDomains">
-            {{ domain }}
-          </b-form-checkbox>
-        </b-form-group>
+        <app-pack-list :type="'domain'"></app-pack-list>
       </b-tab>
     </b-tabs>
   </b-card>
@@ -55,24 +22,31 @@
 
 <script>
 
-// import appPackList from './PackList.vue';
+import appPackList from './PackList.vue';
 
 export default {
   computed: {
-    selectedCharacters: {
-      get() {
-        return this.$store.state.packs.selectedCharacters;
-      },
-      set(value) {
-        this.$store.commit('packs/setSelectedCharacters', value);
-      },
-    },
+    // selectedCharacters: {
+    //   get() {
+    //     return this.$store.state.packs.selectedCharacters;
+    //   },
+    //   set(value) {
+    //     this.$store.commit('packs/setSelectedCharacters', value);
+    //   },
+    // },
     selectedLinages: {
       get() {
-        return this.$store.state.packs.selectedLinages;
+        const selected = this.$store.getters['packs/selectedPacksByType']('linage');
+        return selected;
+        // return this.$store.state.packs.selectedLinages;
       },
       set(value) {
-        this.$store.commit('packs/setSelectedLinages', value);
+        // this.$store.commit('packs/setSelectedLinages', value);
+        const selected = this.$store.getters['packs/selectedPacksByType']('linage');
+        if (JSON.stringify(selected) !== JSON.stringify(value)) {
+          const data = { type: 'linage', packs: value };
+          this.$store.dispatch('packs/setSelectedByType', data);
+        }
       },
     },
     selectedDomains: {
@@ -91,6 +65,7 @@ export default {
     return {};
   },
   components: {
+    appPackList,
   },
 };
 </script>
