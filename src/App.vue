@@ -2,6 +2,10 @@
   <div id="app">
     <app-header></app-header>
     <b-container>
+      <app-deck-generation></app-deck-generation>
+    </b-container>
+    
+    <b-container>
       <b-row class="mt-3">
         <b-col>
           <b-button variant="outline-dark" @click="generate_deck">Generate Decks</b-button>
@@ -34,6 +38,7 @@
 import appHeader from './components/Header.vue';
 import appDeck from './components/decks/Deck.vue';
 import appPackSelection from './components/packs/PackSelection.vue';
+import appDeckGeneration from './components/DeckGeneration.vue';
 
 export default {
   name: 'app',
@@ -77,6 +82,7 @@ export default {
     appDeck,
     appHeader,
     appPackSelection,
+    appDeckGeneration,
   },
 };
 </script>
