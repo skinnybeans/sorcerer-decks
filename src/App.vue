@@ -10,7 +10,7 @@
 <script>
 
 import appHeader from './components/Header.vue';
-import appDeckGeneration from './components/DeckGeneration.vue';
+import appDeckGeneration from './components/deck-generation/DeckGeneration.vue';
 
 export default {
   name: 'app',

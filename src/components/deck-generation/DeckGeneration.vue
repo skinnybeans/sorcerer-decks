@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import appDeck from './decks/Deck.vue';
-import appPackSelection from './packs/PackSelection.vue';
+import appDeck from './Deck.vue';
+import appPackSelection from './PackSelection.vue';
 
 export default {
   computed: {
