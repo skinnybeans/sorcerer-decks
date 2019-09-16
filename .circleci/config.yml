@@ -29,7 +29,21 @@ jobs:
           paths:
             - project
 
-  deploy:
+  deploy-beta:
+    docker:
+      - image: circleci/python:3.6.8-jessie
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: AWS S3
+          command: aws s3 sync ~/project/dist s3://beta.sorcererdecks.com/ --delete
+
+  deploy-prod:
     docker:
       - image: circleci/python:3.6.8-jessie
     steps:
@@ -48,7 +62,10 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy:
+      - deploy-beta:
+          requires:
+            - build      
+      - deploy-prod:
           requires:
             - build
           filters:
