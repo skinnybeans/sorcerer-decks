@@ -9,9 +9,17 @@
     </b-row>
     <b-table
       striped hover
+      :sticky-header="'70vh'"
+      :head-variant="'dark'"
+      :fields="fields"
       :items="items"
       :filter="filter"
-      :filterIncludedFields="filterFields"></b-table>
+      :filterIncludedFields="filterFields"
+      >
+      <template v-slot:cell(CardBack)="data">
+        {{ data.value.replace(' Back', '') }}
+      </template>
+      </b-table>
   </div>
 </template>
 
@@ -22,6 +30,28 @@ export default {
   data() {
     return {
       items: cards,
+      fields: [
+        {
+          key: 'DeckName',
+          label: 'Name',
+        },
+        {
+          key: 'CardName',
+          label: 'Card',
+        },
+        {
+          key: 'Qty',
+          label: 'Qty',
+        },
+        {
+          key: 'DeckType',
+          label: 'Deck Type',
+        },
+        {
+          key: 'CardBack',
+          label: 'Card Type',
+        },
+      ],
       filter: '',
       filterFields: [],
     };
