@@ -1,5 +1,5 @@
 <template>
-    <b-navbar variant="dark" type="dark" fixed="top" :sticky="true">
+    <b-navbar toggleable="sm" variant="dark" type="dark" fixed="top" :sticky="true">
       <b-navbar-brand class="d-flex align-items-center justify-content-center flex-wrap">
         <div>
           <img style="width: 200px" src="../assets/sorcerer.png" alt="">
@@ -10,22 +10,27 @@
           </h2>
         </div>
       </b-navbar-brand>
-      <b-navbar-nav class="ml-auto">
-        <b-link
-          to="/deckgeneration"
-          class="my-auto p-2 rounded text-decoration-none text-white-50"
-          active-class="bg-secondary"
-          >
-          Decks
-        </b-link>
-        <b-link
-          to="/cardlist"
-          class="my-auto p-2 rounded text-decoration-none text-white-50"
-          active-class="bg-secondary"
-          >
-          Cards
-        </b-link>
-      </b-navbar-nav>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+          <b-link
+            to="/deckgeneration"
+            class="my-auto p-2 rounded text-decoration-none text-white-50"
+            active-class="bg-secondary"
+            >
+            Decks
+          </b-link>
+          <b-link
+            to="/cardlist"
+            class="my-auto p-2 rounded text-decoration-none text-white-50"
+            active-class="bg-secondary"
+            >
+            Cards
+          </b-link>
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
 </template>
 
