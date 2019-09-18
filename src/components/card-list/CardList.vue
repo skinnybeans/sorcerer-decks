@@ -1,6 +1,9 @@
 <template>
   <div>
     <b-row class="mt-3">
+      <b-col><h1>Card List</h1></b-col>
+    </b-row>
+    <b-row class="mt-3">
       <b-col>
         <b-form-group>
           <input type="text" placeholder="Type to search" v-model="filter">

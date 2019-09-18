@@ -20,14 +20,14 @@
         <b-navbar-nav class="ml-auto">
           <b-link
             to="/deckgeneration"
-            class="my-auto p-2 rounded text-decoration-none text-white-50"
+            class="my-auto py-2 px-3 mx-3 rounded text-decoration-none text-white-50"
             active-class="bg-secondary"
             >
             Decks
           </b-link>
           <b-link
             to="/cardlist"
-            class="my-auto p-2 rounded text-decoration-none text-white-50"
+            class="my-auto py-2 px-3 mx-3 rounded text-decoration-none text-white-50"
             active-class="bg-secondary"
             >
             Cards
@@ -39,11 +39,5 @@
 
 <script>
 export default {
-  methods: {
-    navigate(path) {
-      this.$router.push(path);
-      console.log(this.$route);
-    },
-  },
 };
 </script>

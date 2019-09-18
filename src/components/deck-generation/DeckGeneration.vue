@@ -2,8 +2,11 @@
   <div>
     <b-container>
       <b-row class="mt-3">
+        <b-col><h1>Deck Generation</h1></b-col>
+      </b-row>
+      <b-row class="mt-3">
         <b-col>
-          <b-button variant="outline-dark" @click="generate_deck">Generate Decks</b-button>
+          <b-button variant="outline-dark" @click="generate_deck">Generate</b-button>
         </b-col>
       </b-row>
       <b-row>
