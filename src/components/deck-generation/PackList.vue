@@ -41,3 +41,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff !important;
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+}
+</style>

@@ -2,7 +2,7 @@
   <div>
     <section class="pt-5">
       <h1>Welcome to Sorcerer Decks</h1>
-      <p>This site has been created to randomly generate decks for Sorcerer by 
+      <p>This site has been created to randomly generate decks for Sorcerer by
         <a href="https://www.whitewizardgames.com/" class="text-info">White Wizard Games</a>.</p>
       <p>The current card list can also be accessed here.</p>
     </section>
