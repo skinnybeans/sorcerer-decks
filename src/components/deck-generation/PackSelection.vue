@@ -1,19 +1,17 @@
 <template>
   <b-card no-body>
     <b-tabs
-      pills
       card
-      active-nav-item-class="font-weight-bold bg-light"
-      nav-item-class="text-danger"
-      active-tab-class=""
+      pills
+      v-model="tabIndex"
       class="dark">
-      <b-tab title="Character" active title-link-class="text-dark">
+      <b-tab title="Character" active :title-link-class="linkClass(0)">
         <app-pack-list :type="'character'"></app-pack-list>
       </b-tab>
-      <b-tab title="Linage" title-link-class="text-dark">
+      <b-tab title="Linage" :title-link-class="linkClass(1)">
         <app-pack-list :type="'linage'"></app-pack-list>
       </b-tab>
-      <b-tab title="Domain" title-link-class="text-dark">
+      <b-tab title="Domain" :title-link-class="linkClass(2)">
         <app-pack-list :type="'domain'"></app-pack-list>
       </b-tab>
     </b-tabs>
@@ -28,7 +26,18 @@ export default {
   computed: {
   },
   data() {
-    return {};
+    return {
+      tabIndex: 0,
+    };
+  },
+  methods: {
+    linkClass(idx) {
+      if (this.tabIndex === idx) {
+        return ['bg-secondary', 'text-light'];
+      }
+
+      return ['bg-light', 'text-secondary'];
+    },
   },
   components: {
     appPackList,
