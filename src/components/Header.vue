@@ -1,11 +1,14 @@
 <template>
     <b-navbar toggleable="sm" variant="dark" type="dark" fixed="top" :sticky="true">
-      <b-navbar-brand class="d-flex align-items-center justify-content-center flex-wrap">
+      <b-navbar-brand
+        class="d-flex align-items-center justify-content-center flex-wrap"
+        to="/"
+        >
         <div>
           <img style="width: 200px" src="../assets/sorcerer.png" alt="">
         </div>
         <div>
-          <h2 class="d-inline-block mb-0 col-12 col-md-6">
+          <h2 class="d-inline-block mb-0 pl-0 col-12 col-md-6 text-white-50">
             Decks
           </h2>
         </div>
