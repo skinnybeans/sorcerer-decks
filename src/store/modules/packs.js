@@ -4,18 +4,18 @@ const packs = {
   namespaced: true,
   state: {
     characters: deckData.characterList,
-    linages: deckData.linageList,
+    lineages: deckData.lineageList,
     domains: deckData.domainList,
     selectedCharacters: deckData.characterList,
-    selectedLinages: deckData.linageList,
+    selectedLineages: deckData.lineageList,
     selectedDomains: deckData.domainList,
   },
   mutations: {
     setSelectedCharacters(state, data) {
       state.selectedCharacters = data.slice();
     },
-    setSelectedLinages(state, data) {
-      state.selectedLinages = data.slice();
+    setSelectedLineages(state, data) {
+      state.selectedLineages = data.slice();
     },
     setSelectedDomains(state, data) {
       state.selectedDomains = data.slice();
@@ -27,8 +27,8 @@ const packs = {
         case 'character':
           commit('setSelectedCharacters', (data.packs));
           break;
-        case 'linage':
-          commit('setSelectedLinages', (data.packs));
+        case 'lineage':
+          commit('setSelectedLineages', (data.packs));
           break;
         case 'domain':
           commit('setSelectedDomains', (data.packs));
@@ -41,7 +41,7 @@ const packs = {
     selectedPacks: (state) => {
       const selectedPacks = {
         characters: state.selectedCharacters.slice(),
-        linages: state.selectedLinages.slice(),
+        lineages: state.selectedLineages.slice(),
         domains: state.selectedDomains.slice(),
       };
       return selectedPacks;
@@ -52,8 +52,8 @@ const packs = {
         case 'character':
           data = state.characters;
           break;
-        case 'linage':
-          data = state.linages;
+        case 'lineage':
+          data = state.lineages;
           break;
         case 'domain':
           data = state.domains;
@@ -69,8 +69,8 @@ const packs = {
         case 'character':
           data = state.selectedCharacters;
           break;
-        case 'linage':
-          data = state.selectedLinages;
+        case 'lineage':
+          data = state.selectedLineages;
           break;
         case 'domain':
           data = state.selectedDomains;

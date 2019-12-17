@@ -50,24 +50,24 @@ export default {
 
       // copy avaiable deck options
       const remainingCharacter = this.selectedPacks.characters.slice();
-      const remainingLinage = this.selectedPacks.linages.slice();
+      const remainingLineage = this.selectedPacks.lineages.slice();
       const remainingDomain = this.selectedPacks.domains.slice();
 
       while (
         remainingCharacter.length > 0
-        && remainingLinage.length > 0
+        && remainingLineage.length > 0
         && remainingDomain.length > 0
       ) {
         const characterIndex = Math.floor(Math.random() * remainingCharacter.length);
-        const linageIndex = Math.floor(Math.random() * remainingLinage.length);
+        const lineageIndex = Math.floor(Math.random() * remainingLineage.length);
         const domainIndex = Math.floor(Math.random() * remainingDomain.length);
         this.decks.push({
           character: remainingCharacter[characterIndex],
-          linage: remainingLinage[linageIndex],
+          lineage: remainingLineage[lineageIndex],
           domain: remainingDomain[domainIndex],
         });
         remainingCharacter.splice(characterIndex, 1);
-        remainingLinage.splice(linageIndex, 1);
+        remainingLineage.splice(lineageIndex, 1);
         remainingDomain.splice(domainIndex, 1);
       }
     },

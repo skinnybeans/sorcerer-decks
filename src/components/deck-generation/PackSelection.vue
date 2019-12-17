@@ -8,8 +8,8 @@
       <b-tab title="Character" active :title-link-class="linkClass(0)">
         <app-pack-list :type="'character'"></app-pack-list>
       </b-tab>
-      <b-tab title="Linage" :title-link-class="linkClass(1)">
-        <app-pack-list :type="'linage'"></app-pack-list>
+      <b-tab title="Lineage" :title-link-class="linkClass(1)">
+        <app-pack-list :type="'lineage'"></app-pack-list>
       </b-tab>
       <b-tab title="Domain" :title-link-class="linkClass(2)">
         <app-pack-list :type="'domain'"></app-pack-list>
