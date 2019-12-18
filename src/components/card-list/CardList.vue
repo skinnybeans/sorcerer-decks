@@ -4,11 +4,6 @@
       <b-col><h1>Card List</h1></b-col>
     </b-row>
     <b-row class="mt-3">
-      <b-col><b-button id="btn-1" @click="setPopTarget('btn-1')">btn-1</b-button></b-col>
-      <b-col><b-button id="btn-2" @click="setPopTarget('btn-2')">btn-2</b-button></b-col>
-      <b-popover :target="popTarget" triggers="click" placement="top">hello pop</b-popover>
-    </b-row>
-    <b-row class="mt-3">
       <b-col>
         <b-form-group>
           <input type="text" placeholder="Type to search" v-model="filter">
@@ -43,7 +38,6 @@ export default {
   },
   data() {
     return {
-      popTarget: 'btn-1',
       items: cards,
       fields: [
         {
