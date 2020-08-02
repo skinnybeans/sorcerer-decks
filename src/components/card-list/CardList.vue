@@ -1,28 +1,29 @@
 <template>
   <div>
     <b-row class="mt-3">
-      <b-col><h1>Card List</h1></b-col>
+      <b-col>
+        <h1>Card List</h1>
+      </b-col>
     </b-row>
     <b-row class="mt-3">
       <b-col>
         <b-form-group>
-          <input type="text" placeholder="Type to search" v-model="filter">
+          <input type="text" placeholder="Type to search" v-model="filter" />
         </b-form-group>
       </b-col>
     </b-row>
     <b-table
-      striped hover
+      striped
+      hover
       :sticky-header="'70vh'"
       :head-variant="'dark'"
       :fields="fields"
       :items="items"
       :filter="filter"
       :filterIncludedFields="filterFields"
-      >
-      <template v-slot:cell(CardBack)="data">
-        {{ data.value.replace(' Back', '') }}
-      </template>
-      </b-table>
+    >
+      <template v-slot:cell(CardBack)="data">{{ data.value.replace(' Back', '') }}</template>
+    </b-table>
   </div>
 </template>
 
@@ -30,12 +31,6 @@
 import { cards } from '../../data/cards';
 
 export default {
-  methods: {
-    setPopTarget(target) {
-      this.popTarget = target;
-      console.log(this.popTarget);
-    },
-  },
   data() {
     return {
       items: cards,
