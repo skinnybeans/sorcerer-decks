@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.13-browsers
+      - image: circleci/node:12.16.1-browsers
     working_directory: ~/project
 
     steps:
@@ -64,7 +64,7 @@ workflows:
       - build
       - deploy-beta:
           requires:
-            - build      
+            - build
       - deploy-prod:
           requires:
             - build
