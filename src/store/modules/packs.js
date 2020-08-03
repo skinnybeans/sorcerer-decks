@@ -46,7 +46,7 @@ const packs = {
       };
       return selectedPacks;
     },
-    packsByType: state => (type) => {
+    packsByType: (state) => (type) => {
       let data = [];
       switch (type) {
         case 'character':
@@ -63,7 +63,7 @@ const packs = {
       }
       return data.slice();
     },
-    selectedPacksByType: state => (type) => {
+    selectedPacksByType: (state) => (type) => {
       let data = [];
       switch (type) {
         case 'character':
