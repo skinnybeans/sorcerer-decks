@@ -13,13 +13,16 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
-Vue.use(VueGtag, { config: { id: 'UA-174248158-1' } });
 Vue.use(BootstrapVue);
 
 const router = new VueRouter({
   mode: 'history',
   routes,
 });
+
+Vue.use(VueGtag,
+  { config: { id: 'UA-174248158-1' } },
+  router);
 
 new Vue({
   store,
